@@ -1,7 +1,8 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
+import processing.data.TableRow;
+import processing.data.Table;
 import processing.core.PApplet;
 
 public class DANI extends PApplet {
@@ -20,10 +21,25 @@ public class DANI extends PApplet {
         return null;
     }
 
+	
 	public void setup() {
 		colorMode(HSB);
+		
+		//Load file
+		String[] lines = loadStrings("data/small.txt");
 
-       
+		
+		for (String line : lines) 
+		{
+		  String[] words = split(line, " ");
+
+		  // Print words
+		  for (String word : words) {
+			System.out.println(word);
+		  }
+		}
+
+		
 	}
 
 	public void keyPressed() {
