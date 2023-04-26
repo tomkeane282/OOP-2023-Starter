@@ -25,7 +25,7 @@ public class DANI extends PApplet {
 		colorMode(HSB);
 
 		//Load file
-		String[] lines = loadStrings("data/small.txt");
+		String[] lines = loadStrings("data/shakespere.txt");
 		ArrayList<String> words = new ArrayList<String>();
 		
 		for (int i = 0; i < lines.length; i++) {
@@ -60,7 +60,13 @@ public class DANI extends PApplet {
 		for (String element : words) 
 		{
 			String[] wordList = element.split(" ");
-			String firstWord = wordList[0];
+			/*String firstWord = wordList[0];*/
+			//String[] wordList = { "" };
+			String firstWord = "";
+			if (wordList.length > 0) {
+				firstWord = wordList[0];
+			}
+
 
 			if (firstWords.contains(firstWord)) 
 			{
