@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 
+
+
 public class DANI extends PApplet {
 
-	
 
 	public void settings() {
 		size(1000, 1000);
@@ -23,7 +24,7 @@ public class DANI extends PApplet {
 	
 	public void setup() {
 		colorMode(HSB);
-
+		
 		//Load file
 		String[] lines = loadStrings("data/shakespere.txt");
 		ArrayList<String> words = new ArrayList<String>();
@@ -91,7 +92,55 @@ public class DANI extends PApplet {
 			}
 		}
 
-		println(result);
+		//println(result);
+
+
+		for (int i = 0; i < 14; i++) {
+			// Pick a random starting element from the array
+			String randomElement = result.get((int) random(result.size()));
+		
+			while (true) {
+				// Split the element into words
+				String[] words3 = randomElement.split(" ");
+		
+				// Pick a random word from the element (excluding the first word)
+				int randomIndex = (int) random(1, words3.length);
+				String randomWord = words3[randomIndex];
+		
+				// Print the first word and the random word (if there is one)
+				System.out.print(words3[0] + " ");
+				if (words3.length > 1) 
+				{
+					System.out.print(randomWord + " ");
+				} 
+				else 
+				{
+					break;  // exit loop if one-word element is picked
+				}
+		
+				// Search for the element where the second word is the first word
+				boolean found = false;
+				for (String element : result) 
+				{
+					String[] words2 = element.split(" ");
+					if (words2.length > 1 && words2[0].equals(randomWord)) 
+					{
+						randomElement = element;
+						found = true;
+						break;
+					}
+				}
+				if (!found) 
+				{
+					break;  //exit loop 
+				}
+			}
+		
+			//new line after each sentence
+			System.out.println();
+		}
+		
+
 	}
 
 	public void keyPressed() {
